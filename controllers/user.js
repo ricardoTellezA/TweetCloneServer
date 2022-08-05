@@ -54,12 +54,12 @@ async function login(input) {
   const userFound = await User.findOne({ email: email.toLowerCase() });
 
   if (!userFound)
-    throw new Error("La contraseña o el password son incorrectos");
+    throw new Error("La contraseña o el correo son incorrectos");
 
   const passwordSuccess = await brcryptjs.compare(password, userFound.password);
 
   if (!passwordSuccess)
-    throw new Error("La contraseña o el password son incorrectos");
+    throw new Error("La contraseña o el correo son incorrectos");
 
 
   return {
